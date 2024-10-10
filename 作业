@@ -1,0 +1,37 @@
+import numpy as np
+def perimeter_of_circle(radius):
+    return  2 * np.pi * radius
+
+
+
+
+
+
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+%matplotlib inline
+
+strain = [0.0748, 0.0997, 0.0109, 0.0449, 0.0948, 0.0798, 0.0698, 0.0029, 0.0159, 0.0179, 0.0094, 0.0499, 0.0079, 0.0099, 0.0129, 0.0848, 0.0548, 0.0139, 0.0019, 0.0089, 0.0598, 0.0648, 0.0224, 0.0124, 0.0898, 0.0114, 0.0274, 0.0249, 0.0069, 0.0299, 0.0119, 0.0, 0.0199, 0.0439, 0.0049, 0.0039, 0.0059, 0.0104, 0.0009, 0.0039]
+stress = [1133.0, 1147.0, 1077.0, 1089.0, 1122.0, 1293.0, 1100.0, 1095.0, 1171.0, 1210.0, 1339.0, 1035.0, 1118.0, 1105.0, 1498.0, 818.0, 1475.0, 1114.0, 110.0, 1159.0, 1407.0, 1270.0, 1247.0, 0.0, 1430.0, 1453.0, 1544.0, 399.0, 1216.0, 1521.0, 1362.0, 1184.0, 1223.0, 1060.0, 1316.0, 1197.0, 977.0, 1089.0, 1384.0, 609.0]
+true_stress_2 = [0.0, 190.8, 402.8, 614.8, 825.8, 986.8, 1046.8, 1073.8, 1092.8, 1168.8, 1113.8, 1119.8, 1125.8, 1131.8, 1136.8, 1141.8, 1146.8, 1151.8, 1160.8, 1178.8, 1194.8, 1210.8, 1228.8, 1246.8, 1264.8, 1282.8, 1316.8, 1349.8, 1382.8, 1415.8, 1448.6, 1481.6, 1513.6, 1546.6, 1579.6, 1612.6, 1644.6, 1677.6, 1710.6, 1743.4]
+
+sorted_indices = np.argsort(strain)
+true_strain = np.array(strain)[sorted_indices]
+true_stress_1 = np.array(stress)[sorted_indices]
+
+plt.figure(figsize=(10, 6))
+plt.plot(true_strain, true_stress_1, label='True Stress 1', color='blue')
+
+plt.xlabel('True Strain [-]')
+plt.ylabel('True Stress (MPa)')
+plt.title('Tensile Stress-Strain Curve')
+
+plt.plot(true_strain, true_stress_2, label='True Stress 2', color='red')
+
+plt.legend()
+
+plt.grid(True)
+plt.show()
